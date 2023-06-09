@@ -2,11 +2,18 @@ import React from "react";
 import { Navbar, Button} from "@nextui-org/react";
 import { Layout } from "./Layout.js";
 import logo from "./logo.jpeg"
+import { useNavigate } from "react-router";
+
 
 
 
 export default function App() {
+  const navigate = useNavigate();
+  function showrecord(){
   
+    navigate("/record");
+
+  }
   
   return (
     <Layout>
@@ -20,11 +27,10 @@ export default function App() {
         <Navbar.Content >
         
            <Button shadow color="gradient"  auto>
-             
              <Navbar.Link href="/" className="nav-link create">Create Record</Navbar.Link>
              </Button>
              <Button shadow color="gradient"  auto>
-             <Navbar.Link href="/record" className="nav-link create">Show Record</Navbar.Link>
+             <Navbar.Link onClick={showrecord} className="nav-link ">Show Record</Navbar.Link>
              </Button>
         </Navbar.Content>
      
