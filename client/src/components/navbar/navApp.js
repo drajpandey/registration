@@ -37,6 +37,7 @@ export default function App() {
              <Button shadow color="gradient"  auto>
              <Navbar.Link onPress={showrecord} className="nav-link ">Show Record</Navbar.Link>
              </Button>
+             
         </Navbar.Content>
      
       </Navbar>

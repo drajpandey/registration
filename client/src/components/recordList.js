@@ -16,17 +16,21 @@ const Record = (props) => (
    <td>{props.record.confirmation}</td>
    <td>{props.record.date}</td>
    <td>
-     <Link className="btn btn-link" to={`/edit/${props.record._id}`}>Edit</Link> |
+    
+    <button>
+     <Link className="btn btn-link"
      
+     to={`/edit/${props.record._id}`}>Edit 👨🏼‍🔧</Link> |
+     </button>
      <button className="btn btn-link"
        onClick={() => {
-        var confirmation=window.confirm(`Do you really to want delete?`);
+        var confirmation=window.prompt(`Give password to take action!!😍`);
        
-        if (confirmation) {
+        if (confirmation === "123") {
           props.deleteRecord(props.record._id);
         }
          else{
-          window.alert("To fir time paas kyu kiya tha?")
+          window.alert("Don't waste your time!!!🤣")
          }
        }}
      >
@@ -49,7 +53,7 @@ export default function RecordList() {
      // redirected to the login page because of the <PrivateRoute /> component.
      if (loggedOut) {
        window.location.reload(true);
-
+       alert("4")
      }
    } catch (error) {
      alert(error)
