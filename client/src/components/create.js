@@ -90,7 +90,7 @@ export default function Create() {
        <div className="form-group">
    
        <label ><h3>Are You Coming?</h3></label>
-        <Radio.Group onChange={setConfirmation} defaultValue="Going" orientation="horizontal">
+        <Radio.Group onChange={setConfirmation} defaultValue="" orientation="horizontal">
       <Radio value="Going" color="primary" labelColor="primary" id="confirmation">
         Going
       </Radio>

@@ -16,6 +16,7 @@ import Login from "./pages/Login.page";
 import PrivateRoute from "./pages/PrivateRoute.page";
 import Signup from "./pages/Signup.page";
 import Navbar from "./components/navbar/navApp";
+import Home from "./pages/Home.page";
 
 
  
@@ -36,7 +37,8 @@ const App = () => {
     {/* users by wrapping it with PrivateRoute here. */}
    
     <Route element={<PrivateRoute />}>
-       <Route exact path="/" element={<Create />} />
+       <Route exact path="/" element={<Home />} />
+       <Route exact path="/create" element={<Create />} />
        <Route path="/edit/:id" element={<Edit />} />
        <Route path="/record" element={<RecordList />} />
     </Route>

@@ -49,6 +49,7 @@ export default function RecordList() {
      // redirected to the login page because of the <PrivateRoute /> component.
      if (loggedOut) {
        window.location.reload(true);
+
      }
    } catch (error) {
      alert(error)

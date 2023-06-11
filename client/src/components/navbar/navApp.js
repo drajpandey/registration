@@ -14,6 +14,11 @@ export default function App() {
     navigate("/record");
 
   }
+  function create(){
+  
+    navigate("/create");
+
+  }
   
   return (
     <Layout>
@@ -27,10 +32,10 @@ export default function App() {
         <Navbar.Content >
         
            <Button shadow color="gradient"  auto>
-             <Navbar.Link href="/" className="nav-link create">Create Record</Navbar.Link>
+             <Navbar.Link onPress={create} className="nav-link create">Create Record</Navbar.Link>
              </Button>
              <Button shadow color="gradient"  auto>
-             <Navbar.Link onClick={showrecord} className="nav-link ">Show Record</Navbar.Link>
+             <Navbar.Link onPress={showrecord} className="nav-link ">Show Record</Navbar.Link>
              </Button>
         </Navbar.Content>
      
