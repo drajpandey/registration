@@ -15,7 +15,7 @@ import { UserProvider } from "./contexts/user.context";
 import Login from "./pages/Login.page";
 import PrivateRoute from "./pages/PrivateRoute.page";
 import Signup from "./pages/Signup.page";
-import Navbar from "./components/navbar/navApp";
+
 import Home from "./pages/Home.page";
 
 
@@ -28,7 +28,7 @@ const App = () => {
 {/* We are wrapping our whole app with UserProvider so that */}
 {/* our user is accessible through out the app from any page*/}
 <UserProvider>
-<Navbar/>
+
 
   <Routes>
     <Route exact path="/login" element={<Login />} />

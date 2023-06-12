@@ -22,11 +22,11 @@ export default function App() {
   
   return (
     <Layout>
-      <Navbar variant="sticky">
+      <Navbar variant="static">
         <Navbar.Brand>
-       
-          <img src={logo} alt="raj" width="70" height="60"
-  />
+       <a href="/"><img src={logo} alt="raj" width="70" height="60"
+  /></a>
+          
           
         </Navbar.Brand>
         <Navbar.Content >

@@ -5,7 +5,8 @@ import "./darkMode.css"
 import { Button } from '@mui/material'
 import { useContext } from 'react';
 import { UserContext } from '../contexts/user.context';
- 
+import { Loading } from "@nextui-org/react";
+import Navbar from "./navbar/navApp";
 
 
  
@@ -41,6 +42,8 @@ const Record = (props) => (
 );
  
 export default function RecordList() {
+
+  const[loading,setloading]=useState(true);
    
  const { logOutUser } = useContext(UserContext);
  
@@ -53,7 +56,7 @@ export default function RecordList() {
      // redirected to the login page because of the <PrivateRoute /> component.
      if (loggedOut) {
        window.location.reload(true);
-       alert("4")
+       
      }
    } catch (error) {
      alert(error)
@@ -74,7 +77,7 @@ export default function RecordList() {
        window.alert(message);
        return;
      }
- 
+     setloading(false);
      const records = await response.json();
      setRecords(records);
    }
@@ -109,6 +112,11 @@ export default function RecordList() {
  
  // This following section will display the table with the records of individuals.
  return (
+  <div>
+<div>
+<Navbar />
+</div>
+
  
    <div>
      <h1>Record List</h1>
@@ -125,9 +133,10 @@ export default function RecordList() {
        <tbody>{recordList()}</tbody>
      </table>
      <>
-     <h1>Welcome to Our Database!!!</h1>
+    {loading ? (<h1><Loading size="xl">Please wait!!!</Loading></h1>):( <h1>Welcome to our Database</h1>)}
      <Button variant="contained" onClick={logOut}>Logout</Button>
    </>
+   </div>
    </div>
    
  );

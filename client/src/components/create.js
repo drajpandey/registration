@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import confetti from 'canvas-confetti';
 import { Input, Spacer ,Button,Radio } from "@nextui-org/react";
-import "./darkMode.css"
-
+import "./darkMode.css";
+import "./create.css";
+import Navbar from "./navbar/navApp";
 
 
  
@@ -55,6 +56,8 @@ export default function Create() {
  const [confirmation, setConfirmation] = React.useState('');
  // This following section will display the form that takes the input from the user.
  return (
+  <div>
+    <div><Navbar /></div>
    <div>
      <h1>Create New Record</h1>
      <form onSubmit={onSubmit}>
@@ -131,6 +134,7 @@ export default function Create() {
     </Button>
        </div>
      </form>
+   </div>
    </div>
  );
 }
