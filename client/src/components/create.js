@@ -60,7 +60,7 @@ export default function Create() {
     <div><Navbar /></div>
    <div>
      <h1>Create New Record</h1>
-     <form onSubmit={onSubmit}>
+     <form className="form" onSubmit={onSubmit}>
        <div className="form-group">
      
           <Input   
