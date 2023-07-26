@@ -28,7 +28,9 @@ router.post("/", async (req, res) => {
     mobile: req.body.mobile,
     confirmation: req.body.confirmation,
     date: req.body.date,
-
+    submissionTime: req.body.submissionTime
+    
+    
   };
   let collection = await db.collection("records");
   let result = await collection.insertOne(newDocument);
@@ -43,7 +45,8 @@ router.patch("/:id", async (req, res) => {
       name: req.body.name,
       mobile: req.body.mobile,
       confirmation: req.body.confirmation,
-      date: req.body.date
+      date: req.body.date,
+      submissionTime: req.body.submissionTime
     }
   };
 

@@ -16,6 +16,7 @@ const Record = (props) => (
    <td>{props.record.mobile}</td>
    <td>{props.record.confirmation}</td>
    <td>{props.record.date}</td>
+   <td>{props.record.submissionTime}</td>
    <td>
     
     <button>
@@ -23,21 +24,24 @@ const Record = (props) => (
      
      to={`/edit/${props.record._id}`}>Edit 👨🏼‍🔧</Link> |
      </button>
+
      <button className="btn btn-link"
        onClick={() => {
-        var confirmation=window.prompt(`Give password to take action!!😍`);
+        // var confirmation=window.prompt(`Give password to take action!!😍`); 
        
-        if (confirmation === "123") {
+        // if (confirmation === "123") {
           props.deleteRecord(props.record._id);
-        }
-         else{
-          window.alert("Don't waste your time!!!🤣")
-         }
+      //   }
+      //    else{
+      //     window.alert("Don't waste your time!!!🤣")
+      //    }
+      //  }}
        }}
      >
         Delete
      </button>
    </td>
+   
  </tr>
 );
  
@@ -127,7 +131,9 @@ export default function RecordList() {
            <th>Mobile</th>
            <th>Confirmation</th>
            <th>Date</th>
+           <th>Submission Time</th>
            <th>Action</th>
+           
          </tr>
        </thead>
        <tbody>{recordList()}</tbody>

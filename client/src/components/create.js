@@ -5,21 +5,21 @@ import { Input, Spacer ,Button,Radio } from "@nextui-org/react";
 import "./darkMode.css";
 import "./create.css";
 import Navbar from "./navbar/navApp";
+// import axios from 'axios';// Assuming you have Axios or any other HTTP client library installed
+
 
 
  
 export default function Create() {
- 
   const handleConfetti = () =>  {
     confetti();
   };
-
- 
  const [form, setForm] = useState({
   name: "",
   mobile: "",
   confirmation: "",
   date:""
+
  });
  const navigate = useNavigate();
  
@@ -33,11 +33,14 @@ export default function Create() {
  
  // This function will handle the submission.
  async function onSubmit(e) {
+   
    e.preventDefault();
- 
+   
+   const submissionTime = new Date().toLocaleString(); // Get the current time in a readable format
+   
    // When a post request is sent to the create url, we'll add a new record to the database.
-   const newPerson = { ...form,confirmation };
- 
+   const newPerson = { ...form,submissionTime,confirmation };
+   
    await fetch("https://registration-5m6t.onrender.com/record", {
      method: "POST",
      headers: {
@@ -49,16 +52,21 @@ export default function Create() {
      window.alert(error);
      return;
    });
+
+   //for checking which data is transmitting
+   console.log(newPerson); 
  
    setForm({ name: "", mobile: "",date:"",confirmation: "" });
    navigate("/record");
  }
  const [confirmation, setConfirmation] = React.useState('');
+ 
  // This following section will display the form that takes the input from the user.
  return (
   <div>
     <div><Navbar /></div>
    <div>
+    
      <h1>Create New Record</h1>
      <form className="form" onSubmit={onSubmit}>
        <div className="form-group">
@@ -129,7 +137,9 @@ export default function Create() {
       rounded
       ripple={true}
       size="xl"
-      onPress={handleConfetti} >
+      onPress={handleConfetti}
+      
+      >
       Submit
     </Button>
        </div>
@@ -137,4 +147,4 @@ export default function Create() {
    </div>
    </div>
  );
-}
+ }
