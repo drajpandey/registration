@@ -33,7 +33,7 @@ export default function Create() {
    
    e.preventDefault();
    
-   const submissionTime = new Date(); // Get the current time in a readable format
+   const submissionTime = new Date().toLocaleTimeString(); // Get the current time in a readable format
    
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form,submissionTime,confirmation };
