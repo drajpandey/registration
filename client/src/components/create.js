@@ -7,9 +7,6 @@ import "./create.css";
 import Navbar from "./navbar/navApp";
 // import axios from 'axios';// Assuming you have Axios or any other HTTP client library installed
 
-
-
- 
 export default function Create() {
   const handleConfetti = () =>  {
     confetti();
@@ -36,12 +33,12 @@ export default function Create() {
    
    e.preventDefault();
    
-   const submissionTime = new Date().toLocaleString(); // Get the current time in a readable format
+   const submissionTime = new Date(); // Get the current time in a readable format
    
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form,submissionTime,confirmation };
    
-   await fetch("http://localhost:5050/record", {
+   await fetch("https://registration-5m6t.onrender.com/record", {
      method: "POST",
      headers: {
        "Content-Type": "application/json",

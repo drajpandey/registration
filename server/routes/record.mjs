@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
     mobile: req.body.mobile,
     confirmation: req.body.confirmation,
     date: req.body.date,
-    submissionTime: req.body.submissionTime,
+    submissionTime: req.body.submissionTime
     
     
   };
