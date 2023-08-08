@@ -24,7 +24,7 @@ export default function Edit() {
  useEffect(() => {
    async function fetchData() {
      const id = params.id.toString();
-     const response = await fetch(`http://localhost:5050/record/${params.id.toString()}`);
+     const response = await fetch(`https://registration-5m6t.onrender.com/record/${params.id.toString()}`);
  
      if (!response.ok) {
        const message = `An error has occurred: ${response.statusText}`;
@@ -68,7 +68,7 @@ export default function Edit() {
      submissionTime: form.submissionTime || new Date().toLocaleString(),
    }
    // This will send a post request to update the data in the database.
-   await fetch(`http://localhost:5050/record/${params.id}`, {
+   await fetch(`https://registration-5m6t.onrender.com/record/${params.id}`, {
      method: "PATCH",
      body: JSON.stringify(editedPerson),
      headers: {

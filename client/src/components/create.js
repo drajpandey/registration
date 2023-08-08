@@ -39,7 +39,7 @@ export default function Create() {
    const newPerson = { ...form,submissionTime,confirmation };
 
 
-   var SERVER = "http://localhost:5050/record";
+   var SERVER = "https://registration-5m6t.onrender.com/record";
 
 
    await fetch(SERVER, {
