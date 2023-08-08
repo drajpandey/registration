@@ -2,18 +2,20 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router";
 import confetti from 'canvas-confetti';
 import { Input, Spacer ,Button,Radio } from "@nextui-org/react";
-
+import "./darkMode.css";
 export default function Edit() {
   
   const handleConfetti = () =>  {
     confetti();
   };
+  // const [submissionTime,SetsubmissionTime] = React.useState('');
   const [confirmation, setConfirmation] = React.useState('');
  const [form, setForm] = useState({
    name: "",
    mobile: "",
    confirmation: "",
    date:"",
+   submissionTime:"",
    records: []
  });
  const params = useParams();
@@ -22,7 +24,7 @@ export default function Edit() {
  useEffect(() => {
    async function fetchData() {
      const id = params.id.toString();
-     const response = await fetch(`https://registration-5m6t.onrender.com/record/${params.id.toString()}`);
+     const response = await fetch(`http://localhost:5050/record/${params.id.toString()}`);
  
      if (!response.ok) {
        const message = `An error has occurred: ${response.statusText}`;
@@ -38,6 +40,7 @@ export default function Edit() {
      }
  
      setForm(record);
+     console.log(record);
    }
  
    fetchData();
@@ -54,14 +57,18 @@ export default function Edit() {
  
  async function onSubmit(e) {
    e.preventDefault();
+   const UpdatedTime = new Date().toLocaleString(); // Get the current time in a readable format
    const editedPerson = {
+    ...form, //we called all form data here becuse we want the for.submition time below error solved of submitted time.
      name: form.name,
      mobile: form.mobile,
      confirmation: confirmation,
-     date:form.date
+     date:form.date,
+     UpdatedTime:UpdatedTime,
+     submissionTime: form.submissionTime || new Date().toLocaleString(),
    }
    // This will send a post request to update the data in the database.
-   await fetch(`https://registration-5m6t.onrender.com/record/${params.id}`, {
+   await fetch(`http://localhost:5050/record/${params.id}`, {
      method: "PATCH",
      body: JSON.stringify(editedPerson),
      headers: {
@@ -75,8 +82,8 @@ export default function Edit() {
  // This following section will display the form that takes input from the user to update the data.
  return (
    <div>
-     <h3>Update Record</h3>
-     <form onSubmit={onSubmit}>
+     <h1>Update Record</h1>
+     <form className="form" onSubmit={onSubmit}>
     
 
        <div className="form-group">

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import confetti from 'canvas-confetti';
-import { Input, Spacer ,Button,Radio } from "@nextui-org/react";
+import { Button,Radio } from "@nextui-org/react";
 import "./darkMode.css";
-import "./create.css";
+// import "./create.css";
 import Navbar from "./navbar/navApp";
 // import axios from 'axios';// Assuming you have Axios or any other HTTP client library installed
 
@@ -33,12 +33,16 @@ export default function Create() {
    
    e.preventDefault();
    
-   const submissionTime = new Date().toLocaleTimeString(); // Get the current time in a readable format
+   const submissionTime = new Date().toLocaleString(); // Get the current time in a readable format
    
    // When a post request is sent to the create url, we'll add a new record to the database.
    const newPerson = { ...form,submissionTime,confirmation };
-   
-   await fetch("https://registration-5m6t.onrender.com/record", {
+
+
+   var SERVER = "http://localhost:5050/record";
+
+
+   await fetch(SERVER, {
      method: "POST",
      headers: {
        "Content-Type": "application/json",
@@ -67,28 +71,19 @@ export default function Create() {
      <h1>Create New Record</h1>
      <form className="form" onSubmit={onSubmit}>
        <div className="form-group">
-     
-          <Input   
+     <label>Name:</label>
+          <input   
            required
-           bordered 
-          labelPlaceholder="Name" 
-          color="primary" 
-           underlined
-           type="text"
-           className="form-control"
+           placeholder="Name"
            id="name"
            value={form.name}
            onChange={(e) => updateForm({ name: e.target.value })} />
        </div>
-       <Spacer y={2} />
+     
        <div className="form-group">
-       
-          <Input   placeholder="Mobile" 
-             labelPlaceholder="Mobile" 
-             color="primary" 
-             underlined
-          required
-          className="form-control"
+       <label>Mobile:</label>
+          <input   placeholder="Mobile" 
+          required       
           id="mobile"
           value={form.mobile}
           onChange={(e) => updateForm({ mobile: e.target.value })}
@@ -97,7 +92,7 @@ export default function Create() {
         
        <div className="form-group">
    
-       <label ><h3>Are You Coming?</h3></label>
+       <label >Are You Coming?</label>
         <Radio.Group onChange={setConfirmation} defaultValue="" orientation="horizontal">
       <Radio value="Going" color="primary" labelColor="primary" id="confirmation">
         Going
@@ -112,8 +107,8 @@ export default function Create() {
     </Radio.Group>
     </div>
    <div className="form-group">
-         <label htmlFor="date"><h3>Date</h3></label>
-         <Input 
+         <label htmlFor="date">Date</label>
+         <input 
          className="form-check-input"
          name="date"
          id="date"
@@ -122,7 +117,7 @@ export default function Create() {
           type="date" 
         />
        </div>
-        <Spacer y={2} />
+        
        <div className="form-group">
     <Button
       shadow

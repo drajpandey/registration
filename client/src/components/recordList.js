@@ -17,29 +17,34 @@ const Record = (props) => (
    <td>{props.record.confirmation}</td>
    <td>{props.record.date}</td>
    <td>{props.record.submissionTime}</td>
+   <td>{props.record.UpdatedTime}</td>
    <td>
     
     <button>
      <Link className="btn btn-link"
      
-     to={`/edit/${props.record._id}`}>Edit 👨🏼‍🔧</Link> |
+     to={`/edit/${props.record._id}`}><i class="fa-solid fa-pen-to-square"> Edit 👨🏼‍🔧</i></Link> 
      </button>
 
      <button className="btn btn-link"
        onClick={() => {
-        // var confirmation=window.prompt(`Give password to take action!!😍`); 
+        props.deleteRecord(props.record._id);
+        //  var confirmation=window.prompt(`Give password to take action!!😍`); 
        
-        // if (confirmation === "123") {
-          props.deleteRecord(props.record._id);
-      //   }
-      //    else{
-      //     window.alert("Don't waste your time!!!🤣")
-      //    }
-      //  }}
-       }}
-     >
-        Delete
+        //  if (confirmation === "123") {
+        //   props.deleteRecord(props.record._id);
+        // }
+        //  else{
+        //   window.alert("Don't waste your time!!!🤣")
+        //  }
+       }}>
+       <i class="fa-solid  fa-trash-can "> Delete</i>
      </button>
+     {/* //https://fontawesome.com/icons */}
+
+     <button>
+      <Link to={`/fees`}>
+     <i class="fa-solid fa-folder-open"> Fees detail</i></Link></button>
    </td>
    
  </tr>
@@ -74,7 +79,7 @@ export default function RecordList() {
  // This method fetches the records from the database.
  useEffect(() => {
    async function getRecords() {
-     const response = await fetch(`https://registration-5m6t.onrender.com/record/`);
+     const response = await fetch(`http://localhost:5050/record/`);
  
      if (!response.ok) {
        const message = `An error occurred: ${response.statusText}`;
@@ -93,7 +98,7 @@ export default function RecordList() {
  
  // This method will delete a record
  async function deleteRecord(id) {
-   await fetch(`https://registration-5m6t.onrender.com/record/${id}`, {
+   await fetch(`http://localhost:5050/record/${id}`, {
      method: "DELETE"
    });
  
@@ -132,17 +137,23 @@ export default function RecordList() {
            <th>Confirmation</th>
            <th>Date</th>
            <th>Submission Time</th>
+           <th>Last Updated Time</th>
            <th>Action</th>
            
          </tr>
        </thead>
        <tbody>{recordList()}</tbody>
+       
      </table>
      <>
     {loading ? (<h1><Loading size="xl">Please wait!!!</Loading></h1>):( <h1>Welcome to our Database</h1>)}
-     <Button variant="contained" onClick={logOut}>Logout</Button>
+    
    </>
    </div>
+   <h1>....</h1>
+      {/* <Clock />  */}
+      <Button variant="contained" onClick={logOut}>Logout</Button>
+     <footer> <h1>&copy; 2023 Study Addict. All rights reserved.</h1></footer>
    </div>
    
  );

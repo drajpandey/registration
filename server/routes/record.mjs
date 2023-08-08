@@ -28,8 +28,8 @@ router.post("/", async (req, res) => {
     mobile: req.body.mobile,
     confirmation: req.body.confirmation,
     date: req.body.date,
-    submissionTime: req.body.submissionTime
-    
+    submissionTime: req.body.submissionTime,
+    fees:req.body.fees
     
   };
   let collection = await db.collection("records");
@@ -46,7 +46,9 @@ router.patch("/:id", async (req, res) => {
       mobile: req.body.mobile,
       confirmation: req.body.confirmation,
       date: req.body.date,
-      submissionTime: req.body.submissionTime
+      submissionTime: req.body.submissionTime,
+      UpdatedTime: req.body.UpdatedTime
+
     }
   };
 

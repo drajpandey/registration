@@ -97,7 +97,9 @@ const Login = () => {
      Login
    </Button>
    <p>Don't have an account? <Link to="/signup">Signup</Link></p>
+   <h5>  By logging in to this site, you agree to our terms of service.</h5>
  </form>
+ 
 }
  
 export default Login;
