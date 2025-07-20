@@ -68,7 +68,7 @@ export default function Create() {
     <div><Navbar /></div>
    <div>
     
-     <h1>Create New Record</h1>
+     <h1>Create New Record_EDIt_build test</h1>
      <form className="form" onSubmit={onSubmit}>
        <div className="form-group">
      <label>Name:</label>
